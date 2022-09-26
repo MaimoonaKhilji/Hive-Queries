@@ -1,0 +1,69 @@
+SELECT * FROM games;
+
+SELECT name,year,inventor FROM games;
+
+SELECT name, list_price+5 FROM games;
+
+SELECT name, round(list_price) FROM games;
+
+SELECT name, -list_price FROM games;
+
+SELECT 5/2;
+
+SELECT concat(name, ' is for players age ',min_age,' or older') FROM games;
+
+SELECT year+10 FROM games;
+
+SELECT DISTINCT min_age FROM games;
+
+SELECT distinct concat(substring(year,1,3),"0s") from games;
+
+SELECT * from games where list_price<10;
+
+SELECT name from games where inventor='Elizabeth Magie';
+
+SELECT * from wax.crayons where red+green+blue >650;
+
+SELECT color,red+green+blue as RGB from wax.crayons where red+green+blue >650;
+
+SELECT * from games where max_players>=6 and list_price<=10;
+
+SELECT * from games where NOT name="Risk";
+
+SELECT * from games where name!="Risk";
+
+SELECT * from games where NOT name = "Candy Land" and name="Risk";
+
+SELECT * from games where NOT name = "Candy Land" OR name="Risk";
+
+SELECT * from games where NOT name = "Candy Land" and NOT name="Risk";
+
+SELECT * from games where NOT (name = "Candy Land" OR name="Risk");
+
+SELECT * from games where name!= "Candy Land" and name!="Risk";
+
+SELECT count(*) as num_rows from default.employees;
+
+SELECT sum(salary) as total_salary from default.employees;
+
+SELECT office_id,count(*) from employees where salary>35000 GROUP BY office_id;
+
+
+SELECT min_age,max_players,count(*) from fun.games GROUP BY min_age,max_players;
+
+SELECT min_age from fun.games GROUP BY min_age;
+
+SELECT distinct min_age from fun.games;
+
+SELECT (list_price*1.25) FROM fun.games;
+
+SELECT round(price*1.25,0) from fun.inventory;--21% tax
+
+
+SELECT concat(list_price,"s") FROM fun.games;
+
+SELECT shop,sum( qty*price) from fun.inventory GROUP BY shop;
+
+SELECT shop,sum( qty*price) from fun.inventory GROUP BY shop having sum(qty*price)>300;
+
+select shop, sum(qty)from fun.inventory WHERE price is NOT NULL group by shop ORDER BY shop;
